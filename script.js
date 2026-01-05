@@ -20,24 +20,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ===== SCROLL ANIMATION =====
+  // ===== FADE-IN SCROLL ANIMATION =====
   const elements = document.querySelectorAll(".fade-in");
 
   if (elements.length > 0) {
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("show");
-            // Optional: unobserve after animation
+            // Stop observing once element is visible
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.1, // Trigger when 10% of element is visible
+      }
     );
 
     elements.forEach((el) => observer.observe(el));
+
+    // Fallback: show all elements immediately on large screens
+    if (window.innerWidth >= 992) {
+      elements.forEach((el) => el.classList.add("show"));
+    }
   }
 });
 
