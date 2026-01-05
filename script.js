@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Dark Mode toggle
+
+  // Dark mode toggle
   const toggle = document.getElementById("darkModeToggle");
   if(localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark-mode");
@@ -54,10 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
       listEl.appendChild(card);
     });
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
   }
 
   prevBtn.onclick = () => { if(currentPage>1){ currentPage--; renderPage(currentPage); }};
   nextBtn.onclick = () => { if(currentPage<totalPages){ currentPage++; renderPage(currentPage); }};
 
   renderPage(currentPage);
+
 });
