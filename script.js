@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ===== DARK MODE TOGGLE =====
   const toggle = document.getElementById("darkModeToggle");
 
-  // Restore dark mode preference from localStorage
+  // Restore dark mode preference
   if (localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark-mode");
     toggle.textContent = "☀️ Light Mode";
@@ -20,4 +19,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
