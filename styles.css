@@ -240,18 +240,4 @@ body.dark-mode footer {
   color: var(--text-dark);
 }
 
-/* ======================== */
-/* FADE-IN ANIMATION        */
-/* ======================== */
-.fade-in {
-  opacity: 1; /* visible by default if JS fails */
-  transform: translateY(0);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-in:not(.show) {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
 
