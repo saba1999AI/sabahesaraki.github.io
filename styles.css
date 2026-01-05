@@ -1,4 +1,4 @@
-/* VARIABLES */
+/* ===================== Variables ===================== */
 :root {
   --bg-light: #fafafa;
   --bg-dark: #0f1220;
@@ -9,7 +9,7 @@
   --accent: #6c63ff;
 }
 
-/* GLOBAL */
+/* ===================== Global ===================== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: Arial, sans-serif;
@@ -22,7 +22,7 @@ body.dark-mode {
   color: var(--text-dark);
 }
 
-/* HEADER */
+/* ===================== Header ===================== */
 header {
   background: #343a40;
   color: white;
@@ -45,7 +45,7 @@ header button {
   cursor: pointer;
 }
 
-/* SECTION CARD */
+/* ===================== Section Card ===================== */
 .section-card {
   background: var(--card-light);
   border-radius: 20px;
@@ -58,8 +58,7 @@ body.dark-mode .section-card {
   background: var(--card-dark);
 }
 
-/* PROJECT GRID */
-.projects-section { padding: 40px 20px; }
+/* ===================== Projects Grid ===================== */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -94,8 +93,11 @@ body.dark-mode .project-card {
   text-decoration: none;
   border-radius: 8px;
 }
+.project-buttons a:hover {
+  background: #4d47c3;
+}
 
-/* PAGINATION */
+/* ===================== Pagination ===================== */
 .pagination {
   display: flex;
   justify-content: center;
@@ -111,12 +113,32 @@ body.dark-mode .project-card {
   cursor: pointer;
   border-radius: 6px;
 }
-#pageInfo { font-weight: 600; color: var(--accent); }
-
-/* CONTACT / SOCIAL */
-.contact-card, .social-links a {
-  margin-top: 10px;
+#pageInfo {
+  font-weight: 600;
+  color: var(--accent);
 }
+
+/* ===================== Contact ===================== */
+.contact-card {
+  background: var(--card-light);
+  padding: 25px 20px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+body.dark-mode .contact-card {
+  background: var(--card-dark);
+  color: var(--text-dark);
+}
+.contact-card p { margin: 10px 0; font-size: 1em; }
+.contact-card .icon { margin-right: 8px; }
+.contact-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===================== Social Links ===================== */
 .social-links {
   display: flex;
   justify-content: center;
@@ -130,3 +152,26 @@ body.dark-mode .project-card {
   color: #fff;
   text-decoration: none;
 }
+
+/* ===================== Footer ===================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 768px) {
+  header h1 { font-size: 2em; }
+  .section-card { padding: 30px 20px; }
+  .project-card { padding: 15px; }
+}
+@media (max-width: 480px) {
+  header h1 { font-size: 1.7em; }
+  nav a { margin: 0 8px; font-size: 0.95em; }
+  .section-card { padding: 20px 15px; margin: 40px 10px; }
+  .project-card { padding: 12px; }
+}
+
