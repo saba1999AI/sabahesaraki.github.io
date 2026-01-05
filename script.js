@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Dark Mode
+  // Dark Mode toggle
   const toggle = document.getElementById("darkModeToggle");
-  if (localStorage.getItem("darkMode") === "enabled") {
+  if(localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark-mode");
     toggle.textContent = "☀️ Light Mode";
   }
@@ -12,20 +12,20 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.textContent = enabled ? "☀️ Light Mode" : "🌙 Dark Mode";
   };
 
-  // Publications Array (replace '#' with real URLs)
+  // Publications
   const publications = [
-    { title: "Breast Cancer Ultrasound Image Segmentation Using 3DUnet++", view:"#", pdf:"#"},
-    { title: "CaPsF: Capsule Fusion for Extracting Psychiatric Stressors", view:"#", pdf:"#"},
-    { title: "Multi-Class Alzheimer's Disease Classification Using Swin Transformer & GWO", view:"#", pdf:"#"},
-    { title: "DKG-LLM: Dynamic Knowledge Graph + LLM Integration", view:"#", pdf:"#"},
-    { title: "Cloud-Driven Generative AI Techniques for Medical Imaging Datasets", view:"#", pdf:"#"},
-    { title: "UNet++ & LSTM Combined Approach for Breast Segmentation", view:"#", pdf:"#"},
-    { title: "Evaluation Metrics in Learning Systems: A Survey", view:"#", pdf:"#"},
-    { title: "BertCaps: BERT Capsule for Persian Multi-Domain Sentiment Analysis", view:"#", pdf:"#"},
-    { title: "Classifying Objects in 3D Point Clouds Using GRU-LSTM", view:"#", pdf:"#"},
-    { title: "A Comprehensive Analysis on ML Methods for Lung Cancer Classification", view:"#", pdf:"#"},
-    { title: "Survey on Whole Slide Image in Pathology", view:"#", pdf:"#"},
-    { title: "Other Research Projects", view:"#", pdf:"#"}
+    {title:"Breast Cancer Ultrasound Image Segmentation Using 3DUnet++", view:"#", pdf:"#"},
+    {title:"CaPsF: Capsule Fusion for Extracting Psychiatric Stressors", view:"#", pdf:"#"},
+    {title:"Multi-Class Alzheimer's Disease Classification Using Swin Transformer & GWO", view:"#", pdf:"#"},
+    {title:"DKG-LLM: Dynamic Knowledge Graph + LLM Integration", view:"#", pdf:"#"},
+    {title:"Cloud-Driven Generative AI Techniques for Medical Imaging Datasets", view:"#", pdf:"#"},
+    {title:"UNet++ & LSTM Combined Approach for Breast Segmentation", view:"#", pdf:"#"},
+    {title:"Evaluation Metrics in Learning Systems: A Survey", view:"#", pdf:"#"},
+    {title:"BertCaps: BERT Capsule for Persian Multi-Domain Sentiment Analysis", view:"#", pdf:"#"},
+    {title:"Classifying Objects in 3D Point Clouds Using GRU-LSTM", view:"#", pdf:"#"},
+    {title:"A Comprehensive Analysis on ML Methods for Lung Cancer Classification", view:"#", pdf:"#"},
+    {title:"Survey on Whole Slide Image in Pathology", view:"#", pdf:"#"},
+    {title:"Other Research Projects", view:"#", pdf:"#"}
   ];
 
   const listEl = document.getElementById("publication-list");
@@ -35,12 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentPage = 1;
   const perPage = 6;
-  const totalPages = Math.ceil(publications.length / perPage);
+  const totalPages = Math.ceil(publications.length/perPage);
 
-  function renderPage(page) {
+  function renderPage(page){
     listEl.innerHTML = "";
-    const start = (page -1) * perPage;
-    const end = start + perPage;
+    const start = (page-1)*perPage;
+    const end = start+perPage;
     publications.slice(start,end).forEach(pub => {
       const card = document.createElement("div");
       card.className = "project-card";
@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
   }
 
-  prevBtn.onclick = () => { if(currentPage>1) { currentPage--; renderPage(currentPage); }};
-  nextBtn.onclick = () => { if(currentPage<totalPages) { currentPage++; renderPage(currentPage); }};
+  prevBtn.onclick = () => { if(currentPage>1){ currentPage--; renderPage(currentPage); }};
+  nextBtn.onclick = () => { if(currentPage<totalPages){ currentPage++; renderPage(currentPage); }};
 
   renderPage(currentPage);
 });
