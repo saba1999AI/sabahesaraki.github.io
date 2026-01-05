@@ -12,20 +12,20 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.textContent = enabled ? "☀️ Light Mode" : "🌙 Dark Mode";
   };
 
-  // Publications + Pagination
-  const pubs = [
-    { title: "Survey on Whole Slide Image in Pathology: Deep Learning...", view: "#", pdf: "#" },
-    { title: "A Combined UNet++ and LSTM Approach for Breast Ultrasound...", view: "#", pdf: "#" },
-    { title: "A Comprehensive Analysis on ML Based Methods for Lung Cancer...", view: "#", pdf: "#" },
-    { title: "Multi-Class Alzheimer’s Disease Classification Using Swin...", view: "#", pdf: "#" },
-    { title: "Evaluation Metrics in Learning Systems: A Survey", view: "#", pdf: "#" },
-    { title: "DKG‑LLM: Dynamic Knowledge Graph + LLM Integration", view: "#", pdf: "#" },
-    { title: "Cloud‑Driven Generative AI Techniques for Imaging Datasets", view: "#", pdf: "#" },
-    { title: "Breast Cancer Ultrasound Image Segmentation Using 3DUnet++", view: "#", pdf: "#" },
-    { title: "CaPsF: Capsule Fusion for Extracting Psychiatric Stressors", view: "#", pdf: "#" },
-    { title: "BertCaps: BERT Capsule for Persian Multi‑Domain Sentiment...", view: "#", pdf: "#" },
-    { title: "UNet++ & LSTM Combined Approach for Breast Segmentation", view: "#", pdf: "#" },
-    { title: "Classifying Objects in 3D Point Clouds Using GRU‑LSTM", view: "#", pdf: "#" }
+  // Publications Array (replace '#' with real URLs)
+  const publications = [
+    { title: "Breast Cancer Ultrasound Image Segmentation Using 3DUnet++", view:"#", pdf:"#"},
+    { title: "CaPsF: Capsule Fusion for Extracting Psychiatric Stressors", view:"#", pdf:"#"},
+    { title: "Multi-Class Alzheimer's Disease Classification Using Swin Transformer & GWO", view:"#", pdf:"#"},
+    { title: "DKG-LLM: Dynamic Knowledge Graph + LLM Integration", view:"#", pdf:"#"},
+    { title: "Cloud-Driven Generative AI Techniques for Medical Imaging Datasets", view:"#", pdf:"#"},
+    { title: "UNet++ & LSTM Combined Approach for Breast Segmentation", view:"#", pdf:"#"},
+    { title: "Evaluation Metrics in Learning Systems: A Survey", view:"#", pdf:"#"},
+    { title: "BertCaps: BERT Capsule for Persian Multi-Domain Sentiment Analysis", view:"#", pdf:"#"},
+    { title: "Classifying Objects in 3D Point Clouds Using GRU-LSTM", view:"#", pdf:"#"},
+    { title: "A Comprehensive Analysis on ML Methods for Lung Cancer Classification", view:"#", pdf:"#"},
+    { title: "Survey on Whole Slide Image in Pathology", view:"#", pdf:"#"},
+    { title: "Other Research Projects", view:"#", pdf:"#"}
   ];
 
   const listEl = document.getElementById("publication-list");
@@ -35,12 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentPage = 1;
   const perPage = 6;
-  const totalPages = Math.ceil(pubs.length / perPage);
+  const totalPages = Math.ceil(publications.length / perPage);
 
-  function showPage(page) {
+  function renderPage(page) {
     listEl.innerHTML = "";
-    const start = (page - 1) * perPage;
-    pubs.slice(start, start + perPage).forEach(pub => {
+    const start = (page -1) * perPage;
+    const end = start + perPage;
+    publications.slice(start,end).forEach(pub => {
       const card = document.createElement("div");
       card.className = "project-card";
       card.innerHTML = `
@@ -52,11 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       listEl.appendChild(card);
     });
-    pageInfo.textContent = `Page ${page} of ${totalPages}`;
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
   }
 
-  prevBtn.onclick = () => { if (currentPage > 1) showPage(--currentPage); };
-  nextBtn.onclick = () => { if (currentPage < totalPages) showPage(++currentPage); };
+  prevBtn.onclick = () => { if(currentPage>1) { currentPage--; renderPage(currentPage); }};
+  nextBtn.onclick = () => { if(currentPage<totalPages) { currentPage++; renderPage(currentPage); }};
 
-  showPage(currentPage);
+  renderPage(currentPage);
 });
