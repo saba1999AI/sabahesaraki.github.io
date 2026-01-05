@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <header>
   <div class="container header-container">
     <h1>Saba Hesaraki</h1>
@@ -21,141 +20,28 @@
   </div>
 </header>
 
-<!-- ABOUT -->
 <section id="about" class="section-card">
   <h2>About Me</h2>
-  <p>
-    I am a Generative AI Engineer and researcher specializing in deep learning, 
-    medical imaging, and intelligent systems. My work bridges theoretical research 
-    with real-world applications, particularly in healthcare and automation.
-  </p>
-  <p>
-    I have contributed to peer-reviewed research in areas including convolutional 
-    neural networks, recurrent and capsule architectures, and multimodal learning. 
-    My research interests encompass generative models, medical image segmentation, 
-    AI-assisted clinical workflows, and scalable machine learning systems.
-  </p>
-  <p>
-    Currently, I am developing AI-powered platforms that integrate large language 
-    models with operational systems to enhance efficiency, decision-making, 
-    and user experience in academic and industry settings.
-  </p>
+  <p>I am a Generative AI Engineer and researcher specializing in deep learning, medical imaging, and intelligent systems. My work bridges theoretical research with real-world applications, particularly in healthcare and automation.</p>
+  <p>I have contributed to peer-reviewed research in areas including convolutional neural networks, recurrent and capsule architectures, and multimodal learning. My research interests encompass generative models, medical image segmentation, AI-assisted clinical workflows, and scalable machine learning systems.</p>
+  <p>Currently, I am developing AI-powered platforms that integrate large language models with operational systems to enhance efficiency, decision-making, and user experience in academic and industry settings.</p>
 </section>
 
-<!-- PUBLICATIONS -->
 <section id="projects" class="projects-section">
   <h2>Publications & Projects</h2>
-
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3>Survey on Whole Slide Image in Pathology: Deep Learning and Machine Learning Approaches</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/Whole_Slide_Image.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>A Combined UNet++ and LSTM Approach for Breast Ultrasound Image Segmentation</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/UNet_LSTM_Breast.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>A Comprehensive Analysis on Machine Learning Based Methods for Lung Cancer Level Classification</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/Lung_Cancer_Classification.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>Multi-Class Alzheimer’s Disease Classification Using Swin Transformer, Wavelet & GWO</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/Alzheimer_SwinGWO.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>Evaluation Metrics in Learning Systems: A Survey</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/Evaluation_Metrics_Survey.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>DKG‑LLM: A Framework for Medical Diagnosis and Personalized Treatment Recommendations via Dynamic Knowledge Graph and Large Language Model Integration</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/DKG_LLM.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>Cloud‑Driven Generative AI Techniques for Augmenting Medical Imaging Datasets: A Literature Review</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/Cloud_Generative_AI.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>Breast Cancer Ultrasound Image Segmentation Using Improved 3DUnet++</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/3DUnet_Breast.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>CaPsF: Capsule Fusion for Extracting Psychiatric Stressors for Suicide from Twitter</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/CaPsF.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>BertCaps: BERT Capsule for Persian Multi‑Domain Sentiment Analysis</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/BertCaps.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>UNet++ and LSTM Combined Approach for Breast Ultrasound Image Segmentation</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/UNet_LSTM_Breast2.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <h3>Classifying Objects in 3D Point Clouds Using Recurrent Neural Network: A GRU‑LSTM Hybrid Approach</h3>
-      <div class="project-buttons">
-        <a href="#" target="_blank">View Online</a>
-        <a href="pdfs/3DPointClouds_GRU_LSTM.pdf" target="_blank">Download PDF</a>
-      </div>
-    </div>
+  <div id="publication-list" class="projects-grid"></div>
+  <div class="pagination">
+    <button id="prevBtn">← Prev</button>
+    <button id="nextBtn">Next →</button>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section-card">
   <h2>📬 Get in Touch</h2>
   <div class="contact-card">
     <p><span class="icon">👩‍💻</span> <strong>Name:</strong> Saba Hesaraki</p>
-    <p><span class="icon">📧</span> <strong>Email:</strong> 
-      <a href="mailto:sabahesaraki1999@gmail.com">sabahesaraki1999@gmail.com</a>
-    </p>
-    <p><span class="icon">🌐</span> <strong>Website:</strong> 
-      <a href="https://saba1999ai.github.io/sabahesaraki.github.io/" target="_blank">Visit My Portfolio</a>
-    </p>
+    <p><span class="icon">📧</span> <strong>Email:</strong> <a href="mailto:sabahesaraki1999@gmail.com">sabahesaraki1999@gmail.com</a></p>
+    <p><span class="icon">🌐</span> <strong>Website:</strong> <a href="https://saba1999ai.github.io/sabahesaraki.github.io/" target="_blank">Visit My Portfolio</a></p>
   </div>
   <div class="social-links">
     <a href="https://github.com/saba1999ai" target="_blank">🐙 GitHub</a>
@@ -163,11 +49,9 @@
   </div>
 </section>
 
-<footer>
-  <p>© 2026 Saba Hesaraki</p>
-</footer>
-
+<footer><p>© 2026 Saba Hesaraki</p></footer>
 <script src="script.js"></script>
 </body>
 </html>
+
 
