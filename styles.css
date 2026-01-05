@@ -1,5 +1,5 @@
 /* ======================== */
-/* VARIABLES & ROOT COLORS  */
+/* VARIABLES & COLORS       */
 /* ======================== */
 :root {
   --bg-light: #fafafa;
@@ -10,36 +10,32 @@
   --text-dark: #e6e6f0;
   --accent: #6c63ff;
   --header-bg: #343a40;
-  --header-text: #fff;
+  --header-text: #ffffff;
   --nav-link: #ffc107;
+  --social-gradient-start: #6c63ff;
+  --social-gradient-end: #4d47c3;
 }
 
 /* ======================== */
 /* GLOBAL STYLES            */
 /* ======================== */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  line-height: 1.7;
   background: var(--bg-light);
   color: var(--text-light);
   transition: background 0.4s, color 0.4s;
-  line-height: 1.7;
 }
 
-/* DARK MODE */
 body.dark-mode {
   background: var(--bg-dark);
   color: var(--text-dark);
-}
-
-body.dark-mode header,
-body.dark-mode footer {
-  background-color: #1a1d3a;
-}
-
-body.dark-mode a {
-  color: #9aa4ff;
 }
 
 /* ======================== */
@@ -75,7 +71,7 @@ nav a:hover {
 }
 
 /* ======================== */
-/* SECTIONS                 */
+/* SECTIONS GENERAL STYLES  */
 /* ======================== */
 section {
   padding: 40px 20px;
@@ -91,13 +87,16 @@ h2 {
   color: var(--accent);
 }
 
-/* About Section */
+/* ======================== */
+/* ABOUT SECTION            */
+/* ======================== */
 .about-section {
   background: var(--card-light);
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   margin: 80px auto;
   padding: 40px;
+  transition: background 0.4s;
 }
 
 body.dark-mode .about-section {
@@ -110,25 +109,47 @@ body.dark-mode .about-section {
 }
 
 /* ======================== */
-/* PROJECTS / PUBLICATIONS  */
+/* PROJECTS & PUBLICATIONS  */
 /* ======================== */
-.project-list li {
-  margin-bottom: 20px;
+.projects-section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px 20px;
+}
+
+.project-card {
+  background: var(--card-light);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.project-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.3em;
+  color: var(--accent);
+}
+
+.project-card p {
+  margin: 0;
+  font-size: 1em;
   line-height: 1.6;
 }
 
-.project-list a {
-  text-decoration: none;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-.project-list a:hover {
-  text-decoration: underline;
+body.dark-mode .project-card {
+  background: var(--card-dark);
+  color: var(--text-dark);
 }
 
 /* ======================== */
-/* CONTACT SECTION           */
+/* CONTACT SECTION          */
 /* ======================== */
 .contact-section {
   max-width: 700px;
@@ -138,13 +159,11 @@ body.dark-mode .about-section {
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   font-family: 'Segoe UI', sans-serif;
+  transition: background 0.4s;
 }
 
-.contact-section h2 {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 25px;
-  color: #2c2c54;
+body.dark-mode .contact-section {
+  background: linear-gradient(135deg, #14173a, #0f1220);
 }
 
 .contact-card {
@@ -162,7 +181,6 @@ body.dark-mode .contact-card {
 .contact-card p {
   font-size: 1em;
   margin: 12px 0;
-  color: var(--text-light);
 }
 
 .contact-card .icon {
@@ -192,7 +210,7 @@ body.dark-mode .contact-card {
   padding: 10px 20px;
   border-radius: 30px;
   color: #fff;
-  background: linear-gradient(135deg, #6c63ff, #4d47c3);
+  background: linear-gradient(135deg, var(--social-gradient-start), var(--social-gradient-end));
   box-shadow: 0 8px 20px rgba(108, 99, 255, 0.35);
   text-decoration: none;
   font-weight: 600;
@@ -214,20 +232,26 @@ footer {
   border-top: 1px solid #ddd;
   margin-top: 40px;
   background: #f4f4f4;
+  transition: background 0.4s;
+}
+
+body.dark-mode footer {
+  background: #1a1d3a;
+  color: var(--text-dark);
 }
 
 /* ======================== */
-/* FADE-IN ANIMATION         */
+/* FADE-IN ANIMATION        */
 /* ======================== */
 .fade-in {
-  opacity: 1; /* visible by default */
-  transform: translateY(30px);
+  opacity: 1; /* visible by default if JS fails */
+  transform: translateY(0);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.fade-in.show {
+.fade-in:not(.show) {
   opacity: 0;
-  transform: translateY(0);
+  transform: translateY(30px);
 }
 
 
