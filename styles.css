@@ -29,7 +29,30 @@ nav a {
   text-decoration: none;
   font-weight: bold;
 }
+.about-section {
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 40px;
+  background: var(--card-light);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
 
+body.dark-mode .about-section {
+  background: var(--card-dark);
+}
+
+.about-section h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.about-section p {
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
 .container {
   width: 90%;
   max-width: 900px;
@@ -50,6 +73,49 @@ h2 {
 a:hover {
   text-decoration: underline;
 }
+:root {
+  --bg-light: #f9f9ff;
+  --bg-dark: #0f1220;
+  --card-light: #ffffff;
+  --card-dark: #1a1d3a;
+  --text-light: #333;
+  --text-dark: #e6e6f0;
+  --accent: #6c63ff;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: background 0.4s, color 0.4s;
+}
+
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark-mode .contact-section {
+  background: linear-gradient(135deg, #14173a, #0f1220);
+}
+
+body.dark-mode .contact-card {
+  background: var(--card-dark);
+}
+
+body.dark-mode a {
+  color: #9aa4ff;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .contact-section {
   max-width: 700px;
   margin: 60px auto;
@@ -103,18 +169,12 @@ a:hover {
 }
 
 .social-links a {
-  padding: 12px 22px;
-  background: #5a67d8;
-  color: #ffffff;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #6c63ff, #4d47c3);
+  box-shadow: 0 8px 20px rgba(108, 99, 255, 0.35);
 }
 
 .social-links a:hover {
-  background: #3c366b;
-  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(108, 99, 255, 0.6);
 }
 footer {
   text-align: center;
