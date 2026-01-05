@@ -60,17 +60,17 @@ document.addEventListener("DOMContentLoaded", () => {
       pdf: "https://raw.githubusercontent.com/saba1999ai/publications/main/pdfs/9_BertCaps.pdf"
     },
     {
-      title: "Other Research Project X",
+      title: "Survey on Whole Slide Image in Pathology: Deep learning and Machine learning approaches",
       view: "#",
       pdf: "https://raw.githubusercontent.com/saba1999ai/publications/main/pdfs/10_ProjectX.pdf"
     },
     {
-      title: "Other Research Project Y",
+      title: "Gaussian Mixture Recurrent Neural Network for Pathogen Detection of Salmonella Enterica: Time series NP-hard problem",
       view: "#",
       pdf: "https://raw.githubusercontent.com/saba1999ai/publications/main/pdfs/11_ProjectY.pdf"
     },
     {
-      title: "Other Research Project Z",
+      title: "Independently Recurrent Neural Network XGBoost (IXGBOOST) proposed method for Short-term load forecasting",
       view: "#",
       pdf: "https://raw.githubusercontent.com/saba1999ai/publications/main/pdfs/12_ProjectZ.pdf"
     }
