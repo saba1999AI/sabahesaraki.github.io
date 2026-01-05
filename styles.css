@@ -58,3 +58,9 @@ footer {
   border-top: 1px solid #ddd;
   margin-top: 40px;
 }
+.contact-info {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 10px;
+  width: fit-content;
+}
