@@ -1,70 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ---------------- Dark Mode ----------------
   const toggle = document.getElementById("darkModeToggle");
+  if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    toggle.textContent = "☀️ Light Mode";
+  }
+
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const isDark = document.body.classList.contains("dark-mode");
+    toggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+    localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+  });
+
+  // ---------------- Publications ----------------
   const publicationList = document.getElementById("publication-list");
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
+  const pageInfo = document.getElementById("pageInfo");
 
+  // Example publications (replace '#' with actual DOI / publisher URLs)
   const publications = [
-    {
-      title: "Survey on Whole Slide Image in Pathology: Deep Learning and Machine Learning Approaches",
-      view: "https://scholar.google.com/scholar?cluster=XXXXXXXXXX",
-      pdf: "pdfs/Whole_Slide_Image.pdf"
-    },
-    {
-      title: "A Combined UNet++ and LSTM Approach for Breast Ultrasound Image Segmentation",
-      view: "https://scholar.google.com/scholar?cluster=YYYYYYYYYY",
-      pdf: "pdfs/UNet_LSTM_Breast.pdf"
-    },
-    {
-      title: "A Comprehensive Analysis on Machine Learning Based Methods for Lung Cancer Level Classification",
-      view: "https://scholar.google.com/scholar?cluster=ZZZZZZZZZZ",
-      pdf: "pdfs/Lung_Cancer_Classification.pdf"
-    },
-    {
-      title: "Multi-Class Alzheimer’s Disease Classification Using Swin Transformer, Wavelet & GWO",
-      view: "https://scholar.google.com/scholar?cluster=AAAAAAAAAA",
-      pdf: "pdfs/Alzheimer_SwinGWO.pdf"
-    },
-    {
-      title: "Evaluation Metrics in Learning Systems: A Survey",
-      view: "https://scholar.google.com/scholar?cluster=BBBBBBBBBB",
-      pdf: "pdfs/Evaluation_Metrics_Survey.pdf"
-    },
-    {
-      title: "DKG‑LLM: Dynamic Knowledge Graph + LLM Integration",
-      view: "https://scholar.google.com/scholar?cluster=CCCCCCCCCC",
-      pdf: "pdfs/DKG_LLM.pdf"
-    },
-    {
-      title: "Cloud‑Driven Generative AI Techniques for Augmenting Medical Imaging Datasets",
-      view: "https://scholar.google.com/scholar?cluster=DDDDDDDDDD",
-      pdf: "pdfs/Cloud_Generative_AI.pdf"
-    },
-    {
-      title: "Breast Cancer Ultrasound Image Segmentation Using Improved 3DUnet++",
-      view: "https://scholar.google.com/scholar?cluster=EEEEEEEEEE",
-      pdf: "pdfs/3DUnet_Breast.pdf"
-    },
-    {
-      title: "CaPsF: Capsule Fusion ... from Twitter",
-      view: "https://scholar.google.com/scholar?cluster=FFFFFFFFFF",
-      pdf: "pdfs/CaPsF.pdf"
-    },
-    {
-      title: "BertCaps: BERT Capsule for Persian Multi‑Domain Sentiment Analysis",
-      view: "https://scholar.google.com/scholar?cluster=GGGGGGGGGG",
-      pdf: "pdfs/BertCaps.pdf"
-    },
-    {
-      title: "UNet++ and LSTM Combined Approach for Breast Ultrasound Image Segmentation",
-      view: "https://scholar.google.com/scholar?cluster=HHHHHHHHHH",
-      pdf: "pdfs/UNet_LSTM_Breast2.pdf"
-    },
-    {
-      title: "Classifying Objects in 3D Point Clouds Using GRU‑LSTM Hybrid",
-      view: "https://scholar.google.com/scholar?cluster=IIIIIIIIII",
-      pdf: "pdfs/3DPointClouds_GRU_LSTM.pdf"
-    }
+    { title: "Survey on Whole Slide Image in Pathology: Deep Learning and Machine Learning Approaches", view: "#", pdf: "#" },
+    { title: "A Combined UNet++ and LSTM Approach for Breast Ultrasound Image Segmentation", view: "#", pdf: "#" },
+    { title: "A Comprehensive Analysis on Machine Learning Based Methods for Lung Cancer Level Classification", view: "#", pdf: "#" },
+    { title: "Multi-Class Alzheimer’s Disease Classification Using Swin Transformer, Wavelet & GWO", view: "#", pdf: "#" },
+    { title: "Evaluation Metrics in Learning Systems: A Survey", view: "#", pdf: "#" },
+    { title: "DKG‑LLM: Dynamic Knowledge Graph + LLM Integration", view: "#", pdf: "#" },
+    { title: "Cloud‑Driven Generative AI Techniques for Augmenting Medical Imaging Datasets", view: "#", pdf: "#" },
+    { title: "Breast Cancer Ultrasound Image Segmentation Using Improved 3DUnet++", view: "#", pdf: "#" },
+    { title: "CaPsF: Capsule Fusion for Extracting Psychiatric Stressors from Twitter", view: "#", pdf: "#" },
+    { title: "BertCaps: BERT Capsule for Persian Multi‑Domain Sentiment Analysis", view: "#", pdf: "#" },
+    { title: "UNet++ and LSTM Combined Approach for Breast Ultrasound Image Segmentation", view: "#", pdf: "#" },
+    { title: "Classifying Objects in 3D Point Clouds Using GRU‑LSTM Hybrid", view: "#", pdf: "#" }
   ];
 
   let currentPage = 1;
@@ -75,11 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
     publicationList.innerHTML = "";
     const start = (page - 1) * perPage;
     const end = start + perPage;
-    const items = publications.slice(start, end);
+    const currentItems = publications.slice(start, end);
 
-    items.forEach(pub => {
+    currentItems.forEach(pub => {
       const card = document.createElement("div");
-      card.classList.add("project-card");
+      card.className = "project-card";
       card.innerHTML = `
         <h3>${pub.title}</h3>
         <div class="project-buttons">
@@ -89,33 +57,25 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       publicationList.appendChild(card);
     });
+
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
   }
 
-  prevBtn.onclick = () => {
+  prevBtn.addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage--;
       renderPage(currentPage);
     }
-  };
+  });
 
-  nextBtn.onclick = () => {
+  nextBtn.addEventListener("click", () => {
     if (currentPage < totalPages) {
       currentPage++;
       renderPage(currentPage);
     }
-  };
-
-  renderPage(currentPage);
-
-  // Dark mode toggle
-  if (localStorage.getItem("darkMode") === "enabled") {
-    document.body.classList.add("dark-mode");
-    toggle.textContent = "☀️ Light Mode";
-  }
-
-  toggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode") ? "enabled" : "disabled");
-    toggle.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
   });
+
+  // Initial render
+  renderPage(currentPage);
 });
+
