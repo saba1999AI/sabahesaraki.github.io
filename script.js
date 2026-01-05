@@ -1,81 +1,132 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // ---------------- Dark Mode ----------------
-  const toggle = document.getElementById("darkModeToggle");
-  if (localStorage.getItem("darkMode") === "enabled") {
-    document.body.classList.add("dark-mode");
-    toggle.textContent = "☀️ Light Mode";
-  }
+/* VARIABLES */
+:root {
+  --bg-light: #fafafa;
+  --bg-dark: #0f1220;
+  --card-light: #fff;
+  --card-dark: #1a1d3a;
+  --text-light: #333;
+  --text-dark: #e6e6f0;
+  --accent: #6c63ff;
+}
 
-  toggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    const isDark = document.body.classList.contains("dark-mode");
-    toggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
-    localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
-  });
+/* GLOBAL */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: background 0.4s, color 0.4s;
+}
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
 
-  // ---------------- Publications ----------------
-  const publicationList = document.getElementById("publication-list");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const pageInfo = document.getElementById("pageInfo");
+/* HEADER */
+header {
+  background: #343a40;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+header nav a {
+  color: #ffc107;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+header button {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-  // Example publications (replace '#' with actual DOI / publisher URLs)
-  const publications = [
-    { title: "Survey on Whole Slide Image in Pathology: Deep Learning and Machine Learning Approaches", view: "#", pdf: "#" },
-    { title: "A Combined UNet++ and LSTM Approach for Breast Ultrasound Image Segmentation", view: "#", pdf: "#" },
-    { title: "A Comprehensive Analysis on Machine Learning Based Methods for Lung Cancer Level Classification", view: "#", pdf: "#" },
-    { title: "Multi-Class Alzheimer’s Disease Classification Using Swin Transformer, Wavelet & GWO", view: "#", pdf: "#" },
-    { title: "Evaluation Metrics in Learning Systems: A Survey", view: "#", pdf: "#" },
-    { title: "DKG‑LLM: Dynamic Knowledge Graph + LLM Integration", view: "#", pdf: "#" },
-    { title: "Cloud‑Driven Generative AI Techniques for Augmenting Medical Imaging Datasets", view: "#", pdf: "#" },
-    { title: "Breast Cancer Ultrasound Image Segmentation Using Improved 3DUnet++", view: "#", pdf: "#" },
-    { title: "CaPsF: Capsule Fusion for Extracting Psychiatric Stressors from Twitter", view: "#", pdf: "#" },
-    { title: "BertCaps: BERT Capsule for Persian Multi‑Domain Sentiment Analysis", view: "#", pdf: "#" },
-    { title: "UNet++ and LSTM Combined Approach for Breast Ultrasound Image Segmentation", view: "#", pdf: "#" },
-    { title: "Classifying Objects in 3D Point Clouds Using GRU‑LSTM Hybrid", view: "#", pdf: "#" }
-  ];
+/* SECTION CARD */
+.section-card {
+  background: var(--card-light);
+  border-radius: 20px;
+  padding: 35px;
+  margin: 50px auto;
+  max-width: 900px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+body.dark-mode .section-card {
+  background: var(--card-dark);
+}
 
-  let currentPage = 1;
-  const perPage = 6;
-  const totalPages = Math.ceil(publications.length / perPage);
+/* PROJECT GRID */
+.projects-section { padding: 40px 20px; }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.project-card {
+  background: var(--card-light);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s, background 0.4s;
+}
+body.dark-mode .project-card {
+  background: var(--card-dark);
+  color: var(--text-dark);
+}
+.project-card h3 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+.project-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.project-buttons a {
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+}
 
-  function renderPage(page) {
-    publicationList.innerHTML = "";
-    const start = (page - 1) * perPage;
-    const end = start + perPage;
-    const currentItems = publications.slice(start, end);
+/* PAGINATION */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.pagination button {
+  padding: 10px 18px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+#pageInfo { font-weight: 600; color: var(--accent); }
 
-    currentItems.forEach(pub => {
-      const card = document.createElement("div");
-      card.className = "project-card";
-      card.innerHTML = `
-        <h3>${pub.title}</h3>
-        <div class="project-buttons">
-          <a href="${pub.view}" target="_blank">View Online</a>
-          <a href="${pub.pdf}" target="_blank">Download PDF</a>
-        </div>
-      `;
-      publicationList.appendChild(card);
-    });
-
-    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-  }
-
-  prevBtn.addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      renderPage(currentPage);
-    }
-  });
-
-  nextBtn.addEventListener("click", () => {
-    if (currentPage < totalPages) {
-      currentPage++;
-      renderPage(currentPage);
-    }
-  });
-
-  // Initial render
-  renderPage(currentPage);
-});
-
+/* CONTACT / SOCIAL */
+.contact-card, .social-links a {
+  margin-top: 10px;
+}
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 10px;
+}
+.social-links a {
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #4d47c3);
+  color: #fff;
+  text-decoration: none;
+}
